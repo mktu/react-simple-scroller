@@ -49,6 +49,24 @@ export const ScrollUpList = () => {
         <SimpleInfiniteScroller
             loadMore={loadMore}
             canScrollUp={hasMore}
+            reverse
+        >
+            <ul className='scroll-component'>
+                {data.map(v => (
+                    <li key={v}>{v}</li>
+                ))}
+            </ul>
+        </SimpleInfiniteScroller>
+
+    )
+}
+
+export const ScrollUpList2 = () => {
+    const { hasMore, loadMore, data } = useLoader();
+    return (
+        <SimpleInfiniteScroller
+            loadMore={loadMore}
+            canScrollUp={hasMore}
         >
             <ul className='scroll-up-component'>
                 {data.map(v => (
@@ -59,4 +77,3 @@ export const ScrollUpList = () => {
 
     )
 }
-

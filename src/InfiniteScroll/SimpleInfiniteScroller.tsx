@@ -36,19 +36,23 @@ type Children<T extends HTMLElement> = React.ReactElement & {
     ref?: React.Ref<T>;
 }
 
+type Props<T extends HTMLElement> = {
+    children: Children<T>
+    loadMore: (scrollDown: boolean) => void,
+    canScrollUp?: boolean,
+    canScrollDown?: boolean,
+    nextScrollThreshold?: number,
+    reverse?:boolean
+}
+
 function ScrollableContainer<T extends HTMLElement>({
     loadMore,
     canScrollUp,
     canScrollDown,
     children,
     nextScrollThreshold = 250,
-}: {
-    children: Children<T>
-    loadMore: (scrollDown: boolean) => void,
-    canScrollUp?: boolean,
-    canScrollDown?: boolean,
-    nextScrollThreshold?: number
-}) {
+    reverse
+}: Props<T>) {
     const [childNode,setChildNode] = useState<T>();
     const [scrollState, setScrollState] = useState<ScrollState>();
     useEffect(() => {
@@ -127,6 +131,7 @@ function ScrollableContainer<T extends HTMLElement>({
         const childProps = {
             ...children.props,
             ref: (value: T) => {
+                if(!value) return;
                 if (children.ref) {
                     if (typeof children.ref === 'function') {
                         children.ref(value);
@@ -136,11 +141,15 @@ function ScrollableContainer<T extends HTMLElement>({
                         refObject.current = value;
                     }
                 }
+                if(reverse){
+                    value.style.display = 'flex';
+                    value.style.flexDirection = 'column-reverse';
+                }
                 setChildNode(value);
             }
         }
         return React.cloneElement(children, childProps);
-    }, [children]);
+    }, [children,reverse]);
 }
 
 
