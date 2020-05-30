@@ -4,6 +4,8 @@
 ### Infinite Scrolldown
 
 ```tsx
+import SimpleInfiniteScroller from 'react-simple-scroller';
+
 export const ScrolldownList = () => {
     const [data, setData] = useState<string[]>([]);
     const [hasMore, setHasMore] = useState<boolean>(false);
@@ -26,6 +28,8 @@ export const ScrolldownList = () => {
 ```
 ### Infinite Scrollup
 ```tsx
+import SimpleInfiniteScroller from 'react-simple-scroller';
+
 export const ScrollupList = () => {
     const [data, setData] = useState<string[]>([]);
     const [hasMore, setHasMore] = useState<boolean>(false);
@@ -53,7 +57,7 @@ export const ScrollupList = () => {
 |-|:-:|:-:|-|
 |canScrollDown|boolean|`false`|Whether there is still data to be read for **scrolling down**. This is required when using the scroll down list|
 |canScrollUp|boolean|`false`|Whether there is still data to be read for **scrolling up**. This is required when using the scroll up list|
-|children|ReactElement|`undefined`|The root element of the scroll like `ul` or `div` with an attribute overflowY : 'auto', |
+|children|ReactElement|`undefined`|The root element of the scroll like `ul` or `div` with an attribute `overflowY : 'auto'`, |
 |reverse|boolean|`false`|If true, it works assuming a **Scroll-up** list|
 |nextScrollThreshold|number|`250`|Threshold for the distance to the top or bottom of the window to call the next scroll|
 |loadMore|function|`undefined`|See descriptions below|
