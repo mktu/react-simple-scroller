@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, CSSProperties } from 'react';
 import SimpleInfiniteScroller from './SimpleInfiniteScroller';
-import './style.scss'
 
 export default {
     title: "SimpleInfiniteScroller"
 };
 
+const style : CSSProperties = {
+    height : '70vh',
+    overflowY: 'auto',
+    border : '1px solid rgba(0,0,0,0.1)',
+    borderRadius: '10px'
+}
+
 const AllData: string[] = Array.from(new Array(300)).map((v, i) => `${i} test`);
 
 const useLoader = () => {
-    const [data, setData] = useState<string[]>(AllData.slice(0, 50));
+    const [data, setData] = useState<string[]>([]);
     const hasMore = data.length < AllData.length;
     const loadMore = () => {
         hasMore && setTimeout(() => {
@@ -33,7 +39,7 @@ export const ScrolldownList = () => {
             canScrollDown={hasMore}
             loadMore={loadMore}
         >
-            <ul className='scroll-component'>
+            <ul style={style}>
                 {data.map(v => (
                     <li key={v}>{v}</li>
                 ))}
@@ -51,24 +57,7 @@ export const ScrollUpList = () => {
             canScrollUp={hasMore}
             reverse
         >
-            <ul className='scroll-component'>
-                {data.map(v => (
-                    <li key={v}>{v}</li>
-                ))}
-            </ul>
-        </SimpleInfiniteScroller>
-
-    )
-}
-
-export const ScrollUpList2 = () => {
-    const { hasMore, loadMore, data } = useLoader();
-    return (
-        <SimpleInfiniteScroller
-            loadMore={loadMore}
-            canScrollUp={hasMore}
-        >
-            <ul className='scroll-up-component'>
+            <ul style={style}>
                 {data.map(v => (
                     <li key={v}>{v}</li>
                 ))}

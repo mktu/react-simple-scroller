@@ -47,18 +47,19 @@ type Props<T extends HTMLElement> = {
 
 function ScrollableContainer<T extends HTMLElement>({
     loadMore,
-    canScrollUp,
-    canScrollDown,
     children,
+    canScrollUp=false,
+    canScrollDown=false,
     nextScrollThreshold = 250,
-    reverse
+    reverse=false
 }: Props<T>) {
     const [childNode,setChildNode] = useState<T>();
     const [scrollState, setScrollState] = useState<ScrollState>();
     useEffect(() => {
         let nextLoad: ScrollDirection = 'none';
         let unmounted = false;
-        const scrollableNode = childNode && getScrollableParent(childNode);
+        if(!childNode) return;
+        const scrollableNode = getScrollableParent(childNode);
         const onScroll = (event: Event) => {
             if (unmounted) return;
             const node = event.target as T;
@@ -96,7 +97,8 @@ function ScrollableContainer<T extends HTMLElement>({
 
     // Block loading of the next items until the scroll height is updated by the last loaded item.
     useEffect(() => {
-        const scrollableNode = childNode && getScrollableParent(childNode);
+        if(!childNode) return;
+        const scrollableNode = getScrollableParent(childNode);
         if (scrollableNode && scrollState) {
             const { snapshot, direction } = scrollState;
             if (scrollableNode.scrollHeight !== snapshot.scrollHeight) {
@@ -112,7 +114,8 @@ function ScrollableContainer<T extends HTMLElement>({
     // If there is not enough data to scroll on the first mount,
     // the next new items needs to be loaded programmatically.
     useEffect(() => {
-        const scrollableNode = childNode && getScrollableParent(childNode);
+        if(!childNode) return;
+        const scrollableNode = getScrollableParent(childNode);
         const scrollHeight = scrollableNode?.scrollHeight || 0;
         const clientHeight = scrollableNode?.clientHeight || 0;
         const scrollTop = scrollableNode?.scrollTop || 0;
