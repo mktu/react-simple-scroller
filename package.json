@@ -1,7 +1,7 @@
 {
-  "name": "react-simple-scroller",
-  "version": "1.0.0",
-  "description": "",
+  "name": "react-simple-infinite-scroller",
+  "version": "0.0.1",
+  "description": "A simple infinite scroller.",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "scripts": {
@@ -15,8 +15,8 @@
     "type": "git",
     "url": "git+https://github.com/mktu/react-simple-scroller.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "mktu",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mktu/react-simple-scroller/issues"
   },
