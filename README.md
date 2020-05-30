@@ -51,6 +51,23 @@ export const ScrollupList = () => {
 
 | Property | Type | Default | Description |
 |-|:-:|:-:|-|
-|canScrollDown|boolean|`undefined`|Whether there is still data to be read when scrolling down. This is required when using the scroll down list|
-|canScrollUp|boolean|`undefined`|Whether there is still data to be read when scrolling up. This is required when using the scroll up list|
+|canScrollDown|boolean|`false`|Whether there is still data to be read for **scrolling down**. This is required when using the scroll down list|
+|canScrollUp|boolean|`false`|Whether there is still data to be read for **scrolling up**. This is required when using the scroll up list|
+|children|ReactElement|`undefined`|The root element of the scroll like `ul` or `div` with an attribute overflowY : 'auto', |
+|reverse|boolean|`false`|If true, it works assuming a **Scroll-up** list|
+|nextScrollThreshold|number|`250`|Threshold for the distance to the top or bottom of the window to call the next scroll|
 |loadMore|function|`undefined`|See descriptions below|
+
+---
+
+### loadMore
+```tsx
+function loadMore(scrolldown : boolean) {
+  ...
+}
+```
+#### Parameters
+* scrolldown : Will be true if called when scrolling down
+
+#### Returns
+void
