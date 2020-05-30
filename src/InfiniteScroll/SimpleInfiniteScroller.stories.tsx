@@ -1,4 +1,4 @@
-import React, { useState, CSSProperties } from 'react';
+import { useState, CSSProperties } from 'react';
 import SimpleInfiniteScroller from './SimpleInfiniteScroller';
 
 export default {

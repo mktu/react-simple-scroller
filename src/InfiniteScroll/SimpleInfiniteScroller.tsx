@@ -52,7 +52,7 @@ function ScrollableContainer<T extends HTMLElement>({
     canScrollDown=false,
     nextScrollThreshold = 250,
     reverse=false
-}: Props<T>) {
+}: Props<T>) : React.ReactElement{
     const [childNode,setChildNode] = useState<T>();
     const [scrollState, setScrollState] = useState<ScrollState>();
     useEffect(() => {
