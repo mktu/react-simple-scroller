@@ -4,7 +4,7 @@
       "jsx": true,
       "useJSXTextNode": true
     },
-    "extends": ["plugin:@typescript-eslint/recommended"],
+    "extends": ["plugin:@typescript-eslint/recommended","plugin:react/recommended"],
     "plugins": ["@typescript-eslint","react-hooks","react"],
     "rules": {
         "@typescript-eslint/explicit-function-return-type": "off",

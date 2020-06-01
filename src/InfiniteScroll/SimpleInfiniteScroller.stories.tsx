@@ -1,4 +1,4 @@
-import { useState, CSSProperties } from 'react';
+import React,{ useState, CSSProperties, useCallback } from 'react';
 import SimpleInfiniteScroller from './SimpleInfiniteScroller';
 
 export default {
@@ -17,13 +17,13 @@ const AllData: string[] = Array.from(new Array(300)).map((v, i) => `${i} test`);
 const useLoader = () => {
     const [data, setData] = useState<string[]>([]);
     const hasMore = data.length < AllData.length;
-    const loadMore = () => {
+    const loadMore = useCallback(() => {
         hasMore && setTimeout(() => {
             setData(prev => {
                 return AllData.slice(0, prev.length + 50);
             })
         }, 500);
-    }
+    },[hasMore]);
     return {
         hasMore,
         loadMore,

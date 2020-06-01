@@ -134,7 +134,7 @@ function ScrollableContainer<T extends HTMLElement>({
         const childProps = {
             ...children.props,
             ref: (value: T) => {
-                if(!value) return;
+                if(!value) return; // called when unmounted
                 if (children.ref) {
                     if (typeof children.ref === 'function') {
                         children.ref(value);
