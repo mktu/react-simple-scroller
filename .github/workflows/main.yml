@@ -33,5 +33,5 @@ jobs:
       
     - name: yarn run deploy-storybook
       env: 
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
-      run: yarn run deploy-storybook --out=.storybuild　--ci
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: yarn run deploy-storybook --out=.storybuild　--ci --host-token-env-variable=GITHUB_TOKEN
