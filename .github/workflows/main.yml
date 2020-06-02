@@ -32,4 +32,6 @@ jobs:
       run: yarn run build
       
     - name: yarn run deploy-storybook
-      run: yarn run deploy-storybook --out=.storybuild　--ci --host-token-env-variable=${{ secrets.GH_TOKEN }}
+      env: 
+       GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: yarn run deploy-storybook --out=.storybuild　--ci --host-token-env-variable=GH_TOKEN
