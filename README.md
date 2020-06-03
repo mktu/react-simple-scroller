@@ -85,4 +85,4 @@ function loadMore(scrolldown : boolean) {
 void
 
 ## Demo
-[Storybook Demo](https://mktu.github.io/react-simple-scroller)
+[Storybook Demo](https://mktu.github.io/react-simple-infinite-scroller)
