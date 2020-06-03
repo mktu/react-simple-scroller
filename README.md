@@ -1,7 +1,12 @@
-# react-simple-scroller
+# react-simple-infinite-scroller
 
 ![CI](https://github.com/mktu/react-simple-infinite-scroller/workflows/CI/badge.svg)
 
+## Installation
+
+```
+npm install react-simple-infinite-scroller
+```
 
 ## Usage
 ### Infinite Scrolldown
@@ -78,3 +83,6 @@ function loadMore(scrolldown : boolean) {
 
 #### Returns
 void
+
+## Demo
+[Storybook Demo](https://mktu.github.io/react-simple-scroller)
