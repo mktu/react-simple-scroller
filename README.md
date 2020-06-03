@@ -1,5 +1,8 @@
 # react-simple-scroller
 
+![CI](https://github.com/mktu/react-simple-infinite-scroller/workflows/CI/badge.svg)
+
+
 ## Usage
 ### Infinite Scrolldown
 
