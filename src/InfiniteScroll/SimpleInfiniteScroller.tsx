@@ -104,7 +104,7 @@ function ScrollableContainer<T extends HTMLElement>({
             if (scrollableNode.scrollHeight !== snapshot.scrollHeight) {
                 if (direction === 'up') {
                     scrollableNode.scrollTop = scrollableNode.scrollHeight -
-                        snapshot.scrollHeight + snapshot.scrollTop;
+                        snapshot.scrollHeight;
                 }
                 setScrollState(undefined);
             }
