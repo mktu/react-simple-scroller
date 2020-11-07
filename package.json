@@ -16,6 +16,11 @@
     "type": "git",
     "url": "git+https://github.com/mktu/react-simple-scroller.git"
   },
+  "keywords": [
+    "react",
+    "infinite scroll",
+    "scroll"
+  ],
   "author": "mktu",
   "license": "MIT",
   "bugs": {
