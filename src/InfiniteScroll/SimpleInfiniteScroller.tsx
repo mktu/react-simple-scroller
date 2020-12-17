@@ -60,11 +60,14 @@ function ScrollableContainer<T extends HTMLElement>({
         let unmounted = false;
         if(!childNode) return;
         const scrollableNode = getScrollableParent(childNode);
+        
         const onScroll = (event: Event) => {
+            
             if (unmounted) return;
             const node = event.target as T;
+            
             const marginBottom = node.scrollHeight - (node.scrollTop + node.clientHeight);
-            const marginTop = node.scrollTop;
+            const marginTop = reverse ? node.scrollHeight + (node.scrollTop - node.clientHeight) : node.scrollTop;
             if (marginTop < nextScrollThreshold && nextLoad !== 'up' && canScrollUp && !scrollState) {
                 nextLoad = 'up';
                 scrollableNode && setScrollState({
@@ -74,6 +77,7 @@ function ScrollableContainer<T extends HTMLElement>({
                         scrollTop: scrollableNode.scrollTop
                     }
                 });
+                
                 loadMore(false);
             }
             else if (marginBottom < nextScrollThreshold && nextLoad !== 'down' && canScrollDown && !scrollState) {
@@ -93,7 +97,7 @@ function ScrollableContainer<T extends HTMLElement>({
             unmounted = true;
             scrollableNode && scrollableNode.removeEventListener('scroll', onScroll);
         }
-    }, [canScrollUp, scrollState, loadMore, setScrollState, nextScrollThreshold, canScrollDown, childNode]);
+    }, [canScrollUp, scrollState, loadMore, setScrollState, nextScrollThreshold, canScrollDown, childNode, reverse]);
 
     // Block loading of the next items until the scroll height is updated by the last loaded item.
     useEffect(() => {
@@ -102,14 +106,15 @@ function ScrollableContainer<T extends HTMLElement>({
         if (scrollableNode && scrollState) {
             const { snapshot, direction } = scrollState;
             if (scrollableNode.scrollHeight !== snapshot.scrollHeight) {
-                if (direction === 'up') {
+                // upward scrolling occurs when reverse is false
+                if (direction === 'up' && !reverse) {
                     scrollableNode.scrollTop = scrollableNode.scrollHeight -
                         snapshot.scrollHeight;
                 }
                 setScrollState(undefined);
             }
         }
-    }, [children, scrollState, childNode])
+    }, [children, scrollState, childNode, reverse])
 
     // If there is not enough data to scroll on the first mount,
     // the next new items needs to be loaded programmatically.
