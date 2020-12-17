@@ -1,6 +1,6 @@
 {
   "name": "react-simple-infinite-scroller",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A simple infinite scroller.",
   "main": "build/index.js",
   "module": "build/index.es.js",
