@@ -12,7 +12,7 @@ npm install react-simple-infinite-scroller
 ### Infinite Scrolldown
 
 ```tsx
-import SimpleInfiniteScroller from 'react-simple-scroller';
+import SimpleInfiniteScroller from 'react-simple-infinite-scroller';
 
 export const ScrolldownList = () => {
     const [data, setData] = useState<string[]>([]);
@@ -36,7 +36,7 @@ export const ScrolldownList = () => {
 ```
 ### Infinite Scrollup
 ```tsx
-import SimpleInfiniteScroller from 'react-simple-scroller';
+import SimpleInfiniteScroller from 'react-simple-infinite-scroller';
 
 export const ScrollupList = () => {
     const [data, setData] = useState<string[]>([]);
